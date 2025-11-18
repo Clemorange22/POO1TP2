@@ -1,14 +1,15 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Interface  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <Interface> (fichier Interface.h)
+//----------------
+#if !defined(INTERFACE_H)
+#define INTERFACE_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,61 +18,56 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <Interface>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
+class Interface {
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //----------------------------------------------------- Méthodes publiques
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  //------------------------------------------------- Surcharge d'opérateurs
+  Interface &operator=(const Interface &unInterface);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //-------------------------------------------- Constructeurs - destructeur
+  Interface(const Interface &unInterface);
+  // Mode d'emploi (constructeur de copie) :
+  //
+  // Contrat :
+  //
 
+  Interface();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+  virtual ~Interface();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+  //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de <Interface>
 
-#endif // XXX_H
-
+#endif // INTERFACE_H

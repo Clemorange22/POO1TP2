@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Interface  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <Interface> (fichier Interface.cpp)
+//------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,60 +16,53 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "Interface.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type Interface::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
-
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+Interface &Interface::operator=(const Interface &unInterface)
 // Algorithme :
 //
-{
-} //----- Fin de operator =
-
+{} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+Interface::Interface(const Interface &unInterface)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+  cout << "Appel au constructeur de copie de <Interface>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+} //----- Fin de Interface (constructeur de copie)
 
-
-Xxx::Xxx ( )
+Interface::Interface()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+  cout << "Appel au constructeur de <Interface>" << endl;
 #endif
-} //----- Fin de Xxx
+} //----- Fin de Interface
 
-
-Xxx::~Xxx ( )
+Interface::~Interface()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+  cout << "Appel au destructeur de <Interface>" << endl;
 #endif
-} //----- Fin de ~Xxx
-
+} //----- Fin de ~Interface
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

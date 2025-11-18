@@ -1,77 +1,86 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetCompose  -  Collection ordonnée de trajets
+simples
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h)
+//----------------
+#if !defined(TRAJETCOMPOSE_H)
+#define TRAJETCOMPOSE_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
+#include "TrajetSimple.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <TrajetCompose>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
+class TrajetCompose : public Trajet {
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //----------------------------------------------------- Méthodes publiques
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  //------------------------------------------------- Surcharge d'opérateurs
+  TrajetCompose &operator=(const TrajetCompose &unTrajetCompose);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //-------------------------------------------- Constructeurs - destructeur
+  TrajetCompose(const TrajetCompose &unTrajetCompose);
+  // Mode d'emploi (constructeur de copie) :
+  //
+  // Contrat :
+  //
 
+  TrajetCompose();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+  TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  virtual ~TrajetCompose();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    virtual ~Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  void Afficher() const;
 
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+  //----------------------------------------------------- Attributs protégés
+  TrajetSimple *trajets;
+  int longueur;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de
+//<TrajetCompose>
 
-#endif // XXX_H
-
+#endif // TrajetCompose_H

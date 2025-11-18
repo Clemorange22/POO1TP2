@@ -1,14 +1,15 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Trajet  -  Classe virtuelle pour différents types de
+trajets
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
+#if !defined(TRAJET_H)
+#define TRAJET_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,61 +18,49 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
-//
+// Rôle de la classe <Trajet>
+// Permet d'en dériver différent types de trajets par héritage
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
+class Trajet {
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //------------------------------------------------- Surcharge d'opérateurs
+  Trajet &operator=(const Trajet &unTrajet);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  //-------------------------------------------- Constructeurs - destructeur
+  Trajet(const Trajet &unTrajet);
+  // Mode d'emploi (constructeur de copie) :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  Trajet();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  virtual ~Trajet();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+  //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // XXX_H
-
+#endif // TRAJET_H

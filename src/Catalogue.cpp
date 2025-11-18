@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Catalogue  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp)
+//------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,60 +16,53 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "Catalogue.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type Catalogue::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
-
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+Catalogue &Catalogue::operator=(const Catalogue &unCatalogue)
 // Algorithme :
 //
-{
-} //----- Fin de operator =
-
+{} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+Catalogue::Catalogue(const Catalogue &unCatalogue)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+  cout << "Appel au constructeur de copie de <Catalogue>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+} //----- Fin de Catalogue (constructeur de copie)
 
-
-Xxx::Xxx ( )
+Catalogue::Catalogue()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+  cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
-} //----- Fin de Xxx
+} //----- Fin de Catalogue
 
-
-Xxx::~Xxx ( )
+Catalogue::~Catalogue()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+  cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
-} //----- Fin de ~Xxx
-
+} //----- Fin de ~Catalogue
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

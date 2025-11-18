@@ -1,14 +1,15 @@
 /*************************************************************************
-                           Xxx  -  description
+                           ListeParcours  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <ListeParcours> (fichier ListeParcours.h)
+//----------------
+#if !defined(LISTEPARCOURS_H)
+#define LISTEPARCOURS_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,61 +18,57 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <ListeParcours>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
+class ListeParcours {
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //----------------------------------------------------- Méthodes publiques
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  //------------------------------------------------- Surcharge d'opérateurs
+  ListeParcours &operator=(const ListeParcours &unListeParcours);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //-------------------------------------------- Constructeurs - destructeur
+  ListeParcours(const ListeParcours &unListeParcours);
+  // Mode d'emploi (constructeur de copie) :
+  //
+  // Contrat :
+  //
 
+  ListeParcours();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+  virtual ~ListeParcours();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+  //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de
+//<ListeParcours>
 
-#endif // XXX_H
-
+#endif // LISTEPARCOURS_H

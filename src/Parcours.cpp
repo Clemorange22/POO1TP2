@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Parcours  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <Parcours> (fichier Parcours.cpp)
+//------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,60 +16,53 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "Parcours.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type Parcours::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
-
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+Parcours &Parcours::operator=(const Parcours &unParcours)
 // Algorithme :
 //
-{
-} //----- Fin de operator =
-
+{} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+Parcours::Parcours(const Parcours &unParcours)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+  cout << "Appel au constructeur de copie de <Parcours>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+} //----- Fin de Parcours (constructeur de copie)
 
-
-Xxx::Xxx ( )
+Parcours::Parcours()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+  cout << "Appel au constructeur de <Parcours>" << endl;
 #endif
-} //----- Fin de Xxx
+} //----- Fin de Parcours
 
-
-Xxx::~Xxx ( )
+Parcours::~Parcours()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+  cout << "Appel au destructeur de <Parcours>" << endl;
 #endif
-} //----- Fin de ~Xxx
-
+} //----- Fin de ~Parcours
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

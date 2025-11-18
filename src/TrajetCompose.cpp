@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetCompose  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <TrajetCompose> (fichier
+// TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,60 +16,85 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type TrajetCompose::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
-
+void TrajetCompose::Afficher() const
+//
+{} // Fin de Afficher
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)
 // Algorithme :
 //
 {
+  if (this == &unTrajetCompose)
+    return *this;
+
+  longueur = unTrajetCompose.longueur;
+  trajets = new TrajetSimple[longueur];
+  int i;
+  for (i = 0; i < longueur; i++) {
+    trajets[i] = unTrajetCompose.trajets[i];
+  }
+
+  return *this;
+
 } //----- Fin de operator =
 
-
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+TrajetCompose::TrajetCompose(const TrajetCompose &unTrajetCompose)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+  cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
 
+  longueur = unTrajetCompose.longueur;
+  trajets = new TrajetSimple[longueur];
+  int i;
+  for (i = 0; i < longueur; i++) {
+    trajets[i] = unTrajetCompose.trajets[i];
+  }
+} //----- Fin de TrajetCompose (constructeur de copie)
 
-Xxx::Xxx ( )
+TrajetCompose::TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+  cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Xxx
 
+  trajets = new TrajetSimple[unLongueur];
+  longueur = unLongueur;
+  int i;
+  for (i = 0; i < longueur; i++) {
+    trajets[i] = unTrajet[i];
+  }
 
-Xxx::~Xxx ( )
+} //----- Fin de TrajetCompose
+
+TrajetCompose::~TrajetCompose()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+  cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de ~Xxx
-
+  delete[] trajets;
+} //----- Fin de ~TrajetCompose
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

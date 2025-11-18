@@ -1,28 +1,29 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Clément BOITTIN et Sami SHAAR
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if !defined(XXX_H)
-#define XXX_H
+//---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h)
+//----------------
+#if !defined(TRAJETSIMPLE_H)
+#define TRAJETSIMPLE_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <TrajetSimple>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre {
+class TrajetSimple : public Trajet {
   //----------------------------------------------------------------- PUBLIC
 
 public:
@@ -33,27 +34,40 @@ public:
   // Contrat :
   //
 
+  void Afficher() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  // Affiche les détails du trajet
+
   //------------------------------------------------- Surcharge d'opérateurs
-  Xxx &operator=(const Xxx &unXxx);
+  TrajetSimple &operator=(const TrajetSimple &unTrajetSimple);
   // Mode d'emploi :
   //
   // Contrat :
   //
 
   //-------------------------------------------- Constructeurs - destructeur
-  Xxx(const Xxx &unXxx);
+  TrajetSimple(const TrajetSimple &unTrajetSimple);
   // Mode d'emploi (constructeur de copie) :
   //
   // Contrat :
   //
 
-  Xxx();
+  TrajetSimple();
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  virtual ~Xxx();
+  TrajetSimple(const char *unDepart, const char *unArrivee,
+               const char *unMoyenTransport);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  virtual ~TrajetSimple();
   // Mode d'emploi :
   //
   // Contrat :
@@ -67,9 +81,10 @@ protected:
   //----------------------------------------------------- Attributs protégés
   char *depart;
   char *arrivee;
-  char *moyenTransport
+  char *moyenTransport;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de
+//<TrajetSimple>
 
-#endif // XXX_H
+#endif // TrajetSimple_H

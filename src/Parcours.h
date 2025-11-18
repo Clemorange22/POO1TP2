@@ -1,14 +1,15 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Parcours  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 18/11/2025
+    copyright            : (C) 2025 par Sami SHAAR - Clément BOITTIN
+    e-mail               : clement.boittin@proton.me
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <Parcours> (fichier Parcours.h)
+//----------------
+#if !defined(PARCOURS_H)
+#define PARCOURS_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,61 +18,56 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <Parcours>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
+class Parcours {
+  //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //----------------------------------------------------- Méthodes publiques
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  //------------------------------------------------- Surcharge d'opérateurs
+  Parcours &operator=(const Parcours &unParcours);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+  //-------------------------------------------- Constructeurs - destructeur
+  Parcours(const Parcours &unParcours);
+  // Mode d'emploi (constructeur de copie) :
+  //
+  // Contrat :
+  //
 
+  Parcours();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+  virtual ~Parcours();
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-    Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Xxx ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+  //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+  //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de <Parcours>
 
-#endif // XXX_H
-
+#endif // PARCOURS_H
