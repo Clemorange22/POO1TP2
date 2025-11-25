@@ -41,6 +41,8 @@ public:
 
   void Afficher() const;
 
+  void SupprimerTrajet(int index);
+
   //------------------------------------------------- Surcharge d'opérateurs
   Catalogue &operator=(const Catalogue &unCatalogue);
   // Mode d'emploi :

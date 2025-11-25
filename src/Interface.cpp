@@ -97,7 +97,15 @@ void Interface::ajouterTrajetCompose() {
   delete[] moyenTransport;
 }
 
-void Interface::suppTrajet() {}
+void Interface::suppTrajet() {
+
+  catalogue->AfficherCatalogu();
+  int index;
+  cout << "Index du trajet a supprimer : ";
+  cin >> index;
+  cout << endl;
+  catalogue->SupprimerTrajet(index);
+}
 
 void Interface::choixVilles() {}
 
