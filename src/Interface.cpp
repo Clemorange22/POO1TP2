@@ -99,7 +99,7 @@ void Interface::ajouterTrajetCompose() {
 
 void Interface::suppTrajet() {
 
-  catalogue->AfficherCatalogu();
+  catalogue->Afficher();
   int index;
   cout << "Index du trajet a supprimer : ";
   cin >> index;
@@ -107,7 +107,23 @@ void Interface::suppTrajet() {
   catalogue->SupprimerTrajet(index);
 }
 
-void Interface::choixVilles() {}
+void Interface::choixVilles() {
+  char *depart = new char[MAX_LENGTH];
+  char *arrivee = new char[MAX_LENGTH];
+
+  cout << "Ville de depart : ";
+  cin >> depart;
+  cout << endl;
+
+  cout << "Ville d'Arrivee : ";
+  cin >> arrivee;
+  cout << endl;
+
+  catalogue->RechercheVoyage(depart, arrivee);
+
+  delete[] depart;
+  delete[] arrivee;
+}
 
 void Interface::choixParcours() {}
 //------------------------------------------------- Surcharge d'opérateurs
