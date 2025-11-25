@@ -12,7 +12,7 @@
 #define LISTEPARCOURS_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Parcours.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -34,6 +34,8 @@ public:
   // Contrat :
   //
 
+  void Afficher() const;
+
   //------------------------------------------------- Surcharge d'opérateurs
   ListeParcours &operator=(const ListeParcours &unListeParcours);
   // Mode d'emploi :
@@ -48,11 +50,13 @@ public:
   // Contrat :
   //
 
-  ListeParcours();
+  ListeParcours(int unNParcours, Parcours *unParcours);
   // Mode d'emploi :
   //
   // Contrat :
   //
+
+  ListeParcours();
 
   virtual ~ListeParcours();
   // Mode d'emploi :
@@ -66,6 +70,8 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
+  int nParcours;
+  Parcours *parcours;
 };
 
 //-------------------------------- Autres définitions dépendantes de

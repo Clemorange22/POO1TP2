@@ -12,7 +12,7 @@
 #define CATALOGUE_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -33,6 +33,13 @@ public:
   //
   // Contrat :
   //
+  void RechercheVoyage();
+
+  void AjouterTrajetSimple();
+
+  void AjouterTrajetCompose();
+
+  void Afficher() const;
 
   //------------------------------------------------- Surcharge d'opérateurs
   Catalogue &operator=(const Catalogue &unCatalogue);
@@ -54,6 +61,8 @@ public:
   // Contrat :
   //
 
+  Catalogue(Trajet *unTrajets[], int unNTrajets);
+
   virtual ~Catalogue();
   // Mode d'emploi :
   //
@@ -66,6 +75,8 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
+  Trajet **trajets;
+  int nTrajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Catalogue>

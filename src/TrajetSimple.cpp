@@ -16,6 +16,7 @@ using namespace std;
 #include <cstring>
 #include <iostream>
 //------------------------------------------------------ Include personnel
+#include "Trajet.h"
 #include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
@@ -29,11 +30,26 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+void TrajetSimple::AfficherInline() const
+// Algorithme :
+//
+{
+  cout << depart << " --(" << moyenTransport << ")--> " << arrivee;
+} // Fin de Afficher
+
 void TrajetSimple::Afficher() const
 // Algorithme :
 //
 {
-  cout << depart << " --(" << moyenTransport << ")--> " << arrivee << endl;
+  AfficherInline();
+  cout << endl;
+} // Fin de Afficher
+
+void TrajetSimple::AfficherDestinationInline() const
+// Algorithme :
+//
+{
+  cout << " --(" << moyenTransport << ")--> " << arrivee;
 } // Fin de Afficher
 
 //------------------------------------------------- Surcharge d'opérateurs

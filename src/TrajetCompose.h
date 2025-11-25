@@ -35,7 +35,7 @@ public:
   //
   // Contrat :
   //
-
+  void Afficher() const;
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetCompose &operator=(const TrajetCompose &unTrajetCompose);
   // Mode d'emploi :
@@ -67,8 +67,6 @@ public:
   //
   // Contrat :
   //
-
-  void Afficher() const;
 
   //------------------------------------------------------------------ PRIVE
 

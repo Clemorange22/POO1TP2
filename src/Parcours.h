@@ -12,7 +12,7 @@
 #define PARCOURS_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -34,6 +34,8 @@ public:
   // Contrat :
   //
 
+  void Afficher() const;
+
   //------------------------------------------------- Surcharge d'opérateurs
   Parcours &operator=(const Parcours &unParcours);
   // Mode d'emploi :
@@ -48,11 +50,14 @@ public:
   // Contrat :
   //
 
-  Parcours();
+  Parcours(int unNTrajets, Trajet *unTrajets[]);
   // Mode d'emploi :
-  //
+  //  Crée un parcours composé des trajets passés en argument
   // Contrat :
   //
+
+  Parcours();
+  // Constructeur
 
   virtual ~Parcours();
   // Mode d'emploi :
@@ -66,6 +71,8 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
+  Trajet **trajets;
+  int nTrajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Parcours>

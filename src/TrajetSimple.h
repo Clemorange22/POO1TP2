@@ -38,7 +38,20 @@ public:
   // Mode d'emploi :
   //
   // Contrat :
-  // Affiche les détails du trajet
+  // Affiche les détails du trajet avec un retour à la ligne
+
+  void AfficherInline() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  // Affiche les détails du trajet sans retour à la ligne
+
+  void AfficherDestinationInline() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  // Affiche la destination et le moyen de transport du trajet seulement, avec
+  // retour à la ligne
 
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetSimple &operator=(const TrajetSimple &unTrajetSimple);

@@ -16,10 +16,12 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
+#include "Catalogue.h"
 #include "Interface.h"
+#include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
-
+#define MAX_LENGTH 100
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -29,26 +31,107 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+void Interface::ajouterTrajetSimple() {
+  char *depart = new char[MAX_LENGTH];
+  char *moyenTransport = new char[MAX_LENGTH];
+  char *arrivee = new char[MAX_LENGTH];
+
+  cout << "Ville de depart : ";
+  cin >> depart;
+  cout << endl;
+
+  cout << "Moyen de Transport : ";
+  cin >> moyenTransport;
+  cout << endl;
+
+  cout << "Ville d'Arrivee : ";
+  cin >> arrivee;
+  cout << endl;
+
+  // catalogue->AjouterTrajetSimple(depart, arrivee, moyenTransport);
+
+  delete[] depart;
+  delete[] arrivee;
+  delete[] moyenTransport;
+}
+
+void Interface::ajouterTrajetCompose() {
+  int l;
+  cout << "Longueur du Trajet Compose : ";
+  cin >> l;
+  cout << endl;
+
+  TrajetSimple *trajets = new TrajetSimple[l];
+
+  char *depart = new char[MAX_LENGTH];
+  char *moyenTransport = new char[MAX_LENGTH];
+  char *arrivee = new char[MAX_LENGTH];
+
+  cout << "La ville d'arrivee du trajet i est identique a la ville de depart "
+          "du trajet i+1"
+       << endl;
+  cout << "Ville de depart 1 : ";
+  cin >> depart;
+  cout << endl;
+
+  int i;
+  for (i = 1; i <= l; i++) {
+
+    if (i > 1) {
+      depart = arrivee;
+    }
+
+    cout << "Moyen de Transport " << i << " : ";
+    cin >> moyenTransport;
+    cout << endl;
+
+    cout << "Ville d'Arrivee " << i << " : ";
+    cin >> arrivee;
+    cout << endl;
+
+    trajets[i] = TrajetSimple(depart, arrivee, moyenTransport);
+  }
+
+  delete[] depart;
+  delete[] arrivee;
+  delete[] moyenTransport;
+}
+
+void Interface::suppTrajet() {}
+
+void Interface::choixVilles() {}
+
+void Interface::choixParcours() {}
 //------------------------------------------------- Surcharge d'opérateurs
 Interface &Interface::operator=(const Interface &unInterface)
 // Algorithme :
 //
-{} //----- Fin de operator =
+{
+  if (this == &unInterface)
+    return *this;
+
+  catalogue =
+      unInterface.catalogue; // On utilise le même catalogue intentionnellement
+
+  return *this;
+} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
 Interface::Interface(const Interface &unInterface)
 // Algorithme :
 //
 {
+  catalogue = unInterface.catalogue;
 #ifdef MAP
   cout << "Appel au constructeur de copie de <Interface>" << endl;
 #endif
 } //----- Fin de Interface (constructeur de copie)
 
-Interface::Interface()
+Interface::Interface(Catalogue *unCatalogue)
 // Algorithme :
 //
 {
+  catalogue = unCatalogue;
 #ifdef MAP
   cout << "Appel au constructeur de <Interface>" << endl;
 #endif

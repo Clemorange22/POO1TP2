@@ -27,6 +27,7 @@ class Trajet {
   //----------------------------------------------------------------- PUBLIC
 
 public:
+  virtual void Afficher() const = 0; // Méthode virtuelle
   //------------------------------------------------- Surcharge d'opérateurs
   Trajet &operator=(const Trajet &unTrajet);
   // Mode d'emploi :

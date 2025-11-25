@@ -12,7 +12,7 @@
 #define INTERFACE_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Catalogue.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -34,6 +34,16 @@ public:
   // Contrat :
   //
 
+  void ajouterTrajetSimple();
+
+  void ajouterTrajetCompose();
+
+  void suppTrajet();
+
+  void choixVilles();
+
+  void choixParcours();
+
   //------------------------------------------------- Surcharge d'opérateurs
   Interface &operator=(const Interface &unInterface);
   // Mode d'emploi :
@@ -48,7 +58,7 @@ public:
   // Contrat :
   //
 
-  Interface();
+  Interface(Catalogue *unCatalogue);
   // Mode d'emploi :
   //
   // Contrat :
@@ -66,6 +76,7 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
+  Catalogue *catalogue;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Interface>

@@ -31,7 +31,16 @@ using namespace std;
 
 void TrajetCompose::Afficher() const
 //
-{} // Fin de Afficher
+{
+  cout << "Longueur :" << longueur << endl;
+  trajets[0].AfficherInline();
+  int i;
+  for (i = 1; i < longueur; i++) {
+    trajets[i].AfficherDestinationInline();
+  }
+  cout << endl;
+} // Fin de Afficher
+
 //------------------------------------------------- Surcharge d'opérateurs
 TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)
 // Algorithme :
@@ -84,6 +93,17 @@ TrajetCompose::TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet)
   }
 
 } //----- Fin de TrajetCompose
+
+TrajetCompose::TrajetCompose()
+// Algorithme :
+//
+{
+#ifdef MAP
+  cout << "Appel au constructeur de <TrajetCompose>" << endl;
+#endif
+  longueur = 0;
+  trajets = new TrajetSimple[0];
+}
 
 TrajetCompose::~TrajetCompose()
 // Algorithme :

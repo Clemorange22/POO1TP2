@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Parcours.h"
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,11 +30,32 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+void Parcours::Afficher() const {
+  cout << "Nombre de trajets : " << nTrajets << endl;
+  int i;
+  for (i = 0; i < nTrajets; i++) {
+    cout << "-----Trajet " << i << " -----" << endl;
+    trajets[i]->Afficher();
+  }
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Parcours &Parcours::operator=(const Parcours &unParcours)
 // Algorithme :
 //
-{} //----- Fin de operator =
+{
+  if (this == &unParcours) {
+    return *this;
+  }
+
+  nTrajets = unParcours.nTrajets;
+  trajets = new Trajet *[nTrajets];
+  int i;
+  for (i = 0; i < nTrajets; i++) {
+    trajets[i] = unParcours.trajets[i];
+  }
+  return *this;
+} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
 Parcours::Parcours(const Parcours &unParcours)
@@ -43,16 +65,38 @@ Parcours::Parcours(const Parcours &unParcours)
 #ifdef MAP
   cout << "Appel au constructeur de copie de <Parcours>" << endl;
 #endif
+  nTrajets = unParcours.nTrajets;
+  trajets = new Trajet *[nTrajets];
+  int i;
+  for (i = 0; i < nTrajets; i++) {
+    trajets[i] = unParcours.trajets[i];
+  }
 } //----- Fin de Parcours (constructeur de copie)
 
-Parcours::Parcours()
+Parcours::Parcours(int unNTrajets, Trajet *unTrajets[])
 // Algorithme :
 //
 {
 #ifdef MAP
   cout << "Appel au constructeur de <Parcours>" << endl;
 #endif
+  nTrajets = unNTrajets;
+  trajets = new Trajet *[nTrajets];
+  int i;
+  for (i = 0; i < nTrajets; i++) {
+    trajets[i] = unTrajets[i];
+  }
 } //----- Fin de Parcours
+
+Parcours::Parcours()
+// Constructeur par défaut
+{
+#ifdef MAP
+  cout << "Appel au constructeur de <Parcours>" << endl;
+#endif
+  trajets = new Trajet *[0];
+  nTrajets = 0;
+}
 
 Parcours::~Parcours()
 // Algorithme :
@@ -61,6 +105,7 @@ Parcours::~Parcours()
 #ifdef MAP
   cout << "Appel au destructeur de <Parcours>" << endl;
 #endif
+  delete[] trajets;
 } //----- Fin de ~Parcours
 
 //------------------------------------------------------------------ PRIVE
