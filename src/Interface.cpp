@@ -119,7 +119,7 @@ void Interface::choixVilles() {
   cin >> arrivee;
   cout << endl;
 
-  catalogue->RechercheVoyage(depart, arrivee);
+  // catalogue->RechercheVoyage(depart, arrivee);
 
   delete[] depart;
   delete[] arrivee;
