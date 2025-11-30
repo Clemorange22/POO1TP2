@@ -44,6 +44,8 @@ public:
 
   void choixParcours();
 
+  void mainloop();
+
   //------------------------------------------------- Surcharge d'opérateurs
   Interface &operator=(const Interface &unInterface);
   // Mode d'emploi :

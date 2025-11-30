@@ -19,6 +19,7 @@ using namespace std;
 #include "Catalogue.h"
 #include "Interface.h"
 #include "TrajetSimple.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 #define MAX_LENGTH 100
@@ -48,7 +49,8 @@ void Interface::ajouterTrajetSimple() {
   cin >> arrivee;
   cout << endl;
 
-  // catalogue->AjouterTrajetSimple(depart, arrivee, moyenTransport);
+  TrajetSimple * nouveauTrajet = new TrajetSimple(depart, arrivee, moyenTransport);
+  catalogue->AjouterTrajet(nouveauTrajet);
 
   delete[] depart;
   delete[] arrivee;
@@ -78,7 +80,7 @@ void Interface::ajouterTrajetCompose() {
   for (i = 1; i <= l; i++) {
 
     if (i > 1) {
-      depart = arrivee;
+      *depart = *arrivee;
     }
 
     cout << "Moyen de Transport " << i << " : ";
@@ -89,25 +91,29 @@ void Interface::ajouterTrajetCompose() {
     cin >> arrivee;
     cout << endl;
 
-    trajets[i] = TrajetSimple(depart, arrivee, moyenTransport);
+    trajets[i-1] = TrajetSimple(depart, arrivee, moyenTransport);
   }
-
+  TrajetCompose * nouveauTrajet = new TrajetCompose(l, trajets);
+  catalogue->AjouterTrajet(nouveauTrajet);
   delete[] depart;
   delete[] arrivee;
   delete[] moyenTransport;
 }
 
-void Interface::suppTrajet() {
+void Interface::suppTrajet()
 
+{
+  
   catalogue->Afficher();
   int index;
   cout << "Index du trajet a supprimer : ";
   cin >> index;
   cout << endl;
-  catalogue->SupprimerTrajet(index);
+  catalogue->SuppTrajet(index);
 }
 
-void Interface::choixVilles() {
+void Interface::choixVilles() 
+{  
   char *depart = new char[MAX_LENGTH];
   char *arrivee = new char[MAX_LENGTH];
 
@@ -119,13 +125,65 @@ void Interface::choixVilles() {
   cin >> arrivee;
   cout << endl;
 
-  // catalogue->RechercheVoyage(depart, arrivee);
+  catalogue->RechercheVoyage(depart, arrivee);
 
   delete[] depart;
   delete[] arrivee;
 }
 
-void Interface::choixParcours() {}
+void Interface::choixParcours() 
+//Afficher les trajets disponibles et demander à l'utilisateur de choisir un parcours
+{
+  catalogue->Afficher();
+  cout << "Choisissez votre parcours :" << endl;
+}
+
+void Interface::mainloop()
+{
+  int choix = 1;
+  while(choix)
+  {
+    cout << "Menu Principal :" << endl;
+    cout << "1. Ajouter un trajet simple" << endl;
+    cout << "2. Ajouter un trajet compose" << endl;
+    if (catalogue->getNTrajets() > 0)
+    {
+      cout << "3. Supprimer un trajet" << endl;
+      cout << "4. Afficher le catalogue" << endl;
+    }
+
+    if (catalogue->getNTrajets() >= 2)
+    {
+      cout << "5. Rechercher un voyage" << endl;
+    }    
+    cout << "0. Quitter" << endl;
+    cout << "Entrez votre choix : ";
+    cin >> choix;
+    cout << endl;
+    if (choix == 1)
+      ajouterTrajetSimple();
+    else if (choix == 2)
+      ajouterTrajetCompose();
+    else if (choix == 3 && catalogue->getNTrajets() > 0)
+      suppTrajet();
+    else if (choix == 4 && catalogue->getNTrajets() > 0)
+      catalogue->Afficher();
+    else if (choix == 5 && catalogue->getNTrajets() >= 2)
+    {
+      choixVilles();
+      cout << endl;
+      cout << "Parcours trouvés : " << endl;
+      choixParcours();
+    }
+    else if (choix == 0)
+      cout << "Au revoir !" << endl;
+    else
+      cout << "Choix invalide, veuillez reessayer." << endl;
+  }
+}
+
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 Interface &Interface::operator=(const Interface &unInterface)
 // Algorithme :

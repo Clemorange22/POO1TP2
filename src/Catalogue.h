@@ -33,15 +33,15 @@ public:
   //
   // Contrat :
   //
-  void RechercheVoyage();
+  void SuppTrajet(int index);
 
-  void AjouterTrajetSimple();
+  void RechercheVoyage(char * depart, char * arrivee);
 
-  void AjouterTrajetCompose();
+  void AjouterTrajet(Trajet * nouveauTrajet);
 
   void Afficher() const;
 
-  void SupprimerTrajet(int index);
+  int getNTrajets() const;
 
   //------------------------------------------------- Surcharge d'opérateurs
   Catalogue &operator=(const Catalogue &unCatalogue);

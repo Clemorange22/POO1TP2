@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
+#include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,8 +30,66 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Catalogue::Afficher() const {
+void Catalogue::SuppTrajet(int index)
+// Algorithme :
+//  trouver le trajet à l'index donné
+ // le supprimer de la liste des trajets
+ // ajuster le nombre total de trajets
+ // déplacer les trajets suivants pour combler le vide
 
+{
+  int i = index -1;
+  delete trajets[i];
+  for (; i < nTrajets - 1; i++) {
+    trajets[i] = trajets[i + 1];
+  }
+  nTrajets--;
+};
+
+
+void Catalogue::RechercheVoyage(char * depart, char * arrivee)
+// Algorithme :
+//parcourir la liste des trajets
+// jsp demerde toi clement 
+
+{
+};
+
+void Catalogue::AjouterTrajet(Trajet * nouveauTrajet)
+  // Algorithme :
+  // créer nouvelle liste de la bonne taille
+  // copie trajets dans nouveau trajets
+  // ajouter nouveauTrajet à la fin
+  // supprimer ancienne liste
+  // incrémente nTrajets
+
+{
+  Trajet ** nouveauTrajetsArray = new Trajet * [nTrajets + 1];
+  int i;
+  for (i = 0; i < nTrajets; i++)
+  {
+    nouveauTrajetsArray[i] = trajets[i];
+  }
+  nouveauTrajetsArray[nTrajets] = nouveauTrajet;
+  delete[] trajets;
+  trajets = nouveauTrajetsArray;
+  nTrajets++;
+};
+
+void Catalogue::Afficher() const 
+{
+  int i;
+  for (i = 0; i < nTrajets; i++)
+  {
+    cout << i + 1 << " : " << endl;
+    trajets[i]->Afficher();
+    cout << endl;
+  }
+};
+
+int Catalogue::getNTrajets() const 
+{
+  return nTrajets;
 };
 
 //------------------------------------------------- Surcharge d'opérateurs
