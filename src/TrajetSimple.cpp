@@ -98,9 +98,9 @@ TrajetSimple::TrajetSimple()
   depart = new char[1];
   arrivee = new char[1];
   moyenTransport = new char[1];
-  strcpy(depart, "\0");
-  strcpy(arrivee, "\0");
-  strcpy(moyenTransport, "\0");
+  strcpy(depart, "");
+  strcpy(arrivee, "");
+  strcpy(moyenTransport, "");
 } //----- Fin de TrajetSimple
 
 TrajetSimple::TrajetSimple(const char *unDepart, const char *unArrivee,
@@ -111,9 +111,9 @@ TrajetSimple::TrajetSimple(const char *unDepart, const char *unArrivee,
 #ifdef MAP
   cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-  depart = new char[strlen(unDepart)];
-  arrivee = new char[strlen(unArrivee)];
-  moyenTransport = new char[strlen(unMoyenTransport)];
+  depart = new char[strlen(unDepart) + 1];
+  arrivee = new char[strlen(unArrivee) + 1];
+  moyenTransport = new char[strlen(unMoyenTransport) + 1];
   strcpy(depart, unDepart);
   strcpy(arrivee, unArrivee);
   strcpy(moyenTransport, unMoyenTransport);
