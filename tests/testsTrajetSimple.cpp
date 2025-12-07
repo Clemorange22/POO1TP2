@@ -8,7 +8,7 @@ int testsTrajetSimple() {
   t1->Afficher();
   TrajetSimple *t2 = new TrajetSimple(*t1);
 
-  TrajetSimple *t3;
+  TrajetSimple *t3 = new TrajetSimple;
 
   *t3 = *t2;
 
