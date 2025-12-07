@@ -60,6 +60,10 @@ TrajetSimple &TrajetSimple::operator=(const TrajetSimple &unTrajetSimple)
   if (this == &unTrajetSimple)
     return *this;
 
+  delete[] depart;
+  delete[] arrivee;
+  delete[] moyenTransport;
+
   depart = new char[strlen(unTrajetSimple.depart) + 1];
   arrivee = new char[strlen(unTrajetSimple.arrivee) + 1];
   moyenTransport = new char[strlen(unTrajetSimple.moyenTransport) + 1];
