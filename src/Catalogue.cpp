@@ -14,10 +14,12 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
-#include "TrajetSimple.h"
+#include "Trajet.h"
+#include "Parcours.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -47,13 +49,73 @@ void Catalogue::SuppTrajet(int index)
 };
 
 
-void Catalogue::RechercheVoyage(char * depart, char * arrivee)
+void Catalogue::RechercheVoyageSimple(const char * depart, const char * arrivee)
 // Algorithme :
 //parcourir la liste des trajets
-// jsp demerde toi clement 
+// Si depart et arrivee correspondent, afficher le trajet
 
 {
+  int cpt = 0;
+  int i;
+  for (i = 0; i < nTrajets; i++) 
+  {
+    if (strcmp(trajets[i]->getDepart(), depart) == 0 &&
+        strcmp(trajets[i]->getArrivee(), arrivee) == 0) 
+    {
+      cpt++;
+      cout << "Trajet trouvé " << cpt << ":" << endl;
+      trajets[i]->Afficher();
+      cout << endl;      
+    }
+  }
+  if (!cpt)
+  {
+    cout << "Aucun trajet trouvé entre " << depart << " et " << arrivee << "." << endl;
+  }
 };
+
+
+void Catalogue::RechercheVoyageAvancee(const char * depart, const char * arrivee)
+// Algorithme :
+//parcourir la liste des trajets
+// pour chaque trajet, si le point de départ correspond, lancer une recherche récursive avec comme départ, l'arrivée du précédent, jusqu'à atteindre la destination finale
+// attention aux boucles
+// afficher tous les parcours trouvés
+
+
+{
+  static int cpt = 0;
+  static Parcours res;
+  int i;
+  for (i = 0; i < nTrajets; i++) 
+  {
+    if (strcmp(trajets[i]->getDepart(), depart) == 0) 
+    {
+      // Trouvé un trajet qui commence à 'depart'
+      if (strcmp(trajets[i]->getArrivee(), arrivee) == 0) 
+      {
+        // C'est un trajet direct
+        cpt++;
+        cout << "Trajet trouvé " << cpt << ":" << endl;
+        trajets[i]->Afficher();
+        cout << endl;
+      } 
+      else 
+      {
+        // Rechercher des trajets à partir de l'arrivée de ce trajet
+        RechercheVoyageAvancee(trajets[i]->getArrivee(), arrivee);
+      }
+    }
+  }
+
+  if (!cpt)
+  {
+    cout << "Aucun trajet trouvé entre " << depart << " et " << arrivee << "." << endl;
+  }
+
+};
+
+
 
 void Catalogue::AjouterTrajet(Trajet * nouveauTrajet)
   // Algorithme :
@@ -91,6 +153,7 @@ int Catalogue::getNTrajets() const
 {
   return nTrajets;
 };
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 Catalogue &Catalogue::operator=(const Catalogue &unCatalogue)

@@ -53,6 +53,10 @@ public:
   // Affiche la destination et le moyen de transport du trajet seulement, avec
   // retour à la ligne
 
+  const char* getDepart() const;
+  
+  const char* getArrivee() const;
+
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetSimple &operator=(const TrajetSimple &unTrajetSimple);
   // Mode d'emploi :

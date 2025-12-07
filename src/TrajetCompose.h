@@ -36,6 +36,11 @@ public:
   // Contrat :
   //
   void Afficher() const;
+
+  const char* getDepart() const;
+
+  const char* getArrivee() const;
+  
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetCompose &operator=(const TrajetCompose &unTrajetCompose);
   // Mode d'emploi :

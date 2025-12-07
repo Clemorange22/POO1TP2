@@ -32,7 +32,7 @@ using namespace std;
 void TrajetCompose::Afficher() const
 //
 {
-  cout << "Longueur :" << longueur << endl;
+  cout << "Longueur : " << longueur << endl;
   trajets[0].AfficherInline();
   int i;
   for (i = 1; i < longueur; i++) {
@@ -40,6 +40,17 @@ void TrajetCompose::Afficher() const
   }
   cout << endl;
 } // Fin de Afficher
+
+const char* TrajetCompose::getDepart() const
+
+{
+  return trajets[0].getDepart();
+}
+
+const char* TrajetCompose::getArrivee() const
+{
+  return trajets[longueur - 1].getArrivee();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)

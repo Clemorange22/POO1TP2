@@ -35,7 +35,9 @@ public:
   //
   void SuppTrajet(int index);
 
-  void RechercheVoyage(char * depart, char * arrivee);
+  void RechercheVoyageSimple(const char * depart, const char * arrivee);
+
+  void RechercheVoyageAvancee(const char * depart, const char * arrivee);
 
   void AjouterTrajet(Trajet * nouveauTrajet);
 
