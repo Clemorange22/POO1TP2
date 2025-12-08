@@ -13,6 +13,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
+#include "ListeParcours.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -35,9 +36,9 @@ public:
   //
   void SuppTrajet(int index);
 
-  void RechercheVoyageSimple(const char * depart, const char * arrivee);
+  ListeParcours RechercheVoyageSimple(const char * depart, const char * arrivee);
 
-  void RechercheVoyageAvancee(const char * depart, const char * arrivee);
+  ListeParcours RechercheVoyageAvancee(const char * depart, const char * arrivee);
 
   void AjouterTrajet(Trajet * nouveauTrajet);
 

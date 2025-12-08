@@ -34,7 +34,7 @@ void Parcours::Afficher() const {
   cout << "Nombre de trajets : " << nTrajets << endl;
   int i;
   for (i = 0; i < nTrajets; i++) {
-    cout << "----- Trajet " << i << " -----" << endl;
+    cout << "----- Trajet " << i+1 << " -----" << endl;
     trajets[i]->Afficher();
   }
 }

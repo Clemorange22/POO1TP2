@@ -20,6 +20,7 @@ using namespace std;
 #include "Catalogue.h"
 #include "Trajet.h"
 #include "Parcours.h"
+#include "ListeParcours.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -49,56 +50,69 @@ void Catalogue::SuppTrajet(int index)
 };
 
 
-void Catalogue::RechercheVoyageSimple(const char * depart, const char * arrivee)
+ListeParcours Catalogue::RechercheVoyageSimple(const char * depart, const char * arrivee)
 // Algorithme :
 //parcourir la liste des trajets
 // Si depart et arrivee correspondent, afficher le trajet
 
 {
-  int cpt = 0;
+  int cptParcours = 0;
+  Parcours parcoursArray[100];
+  ListeParcours parcoursTrouves;
+
   int i;
   for (i = 0; i < nTrajets; i++) 
   {
     if (strcmp(trajets[i]->getDepart(), depart) == 0 &&
         strcmp(trajets[i]->getArrivee(), arrivee) == 0) 
     {
-      cpt++;
-      cout << "Trajet trouvé " << cpt << ":" << endl;
-      trajets[i]->Afficher();
-      cout << endl;      
+      Parcours p(1, &trajets[i]);
+      parcoursArray[cptParcours] = p;
+      cptParcours++;           
     }
   }
-  if (!cpt)
-  {
-    cout << "Aucun trajet trouvé entre " << depart << " et " << arrivee << "." << endl;
-  }
+  parcoursTrouves = ListeParcours(cptParcours, parcoursArray);
+
+  return parcoursTrouves;
 };
 
 
-void Catalogue::RechercheVoyageAvancee(const char * depart, const char * arrivee)
+ListeParcours Catalogue::RechercheVoyageAvancee(const char * depart, const char * arrivee)
 // Algorithme :
 //parcourir la liste des trajets
 // pour chaque trajet, si le point de départ correspond, lancer une recherche récursive avec comme départ, l'arrivée du précédent, jusqu'à atteindre la destination finale
-// attention aux boucles
-// afficher tous les parcours trouvés
+// Recenser tous les parcours trouvés dans ListeParcours 
 
 
 {
-  static int cpt = 0;
+  //Définition des variables statiques pour conserver l'état entre les appels récursifs
+  static int cptTrajet = 0;
+  static Trajet* currentTrajet[100];  
   static Parcours res;
+
+  static int cptParcours = 0;
+  static Parcours* parcoursArray[100];
+  static ListeParcours parcoursTrouves;
+ 
+  //On parcourt tous les trajets disponibles
   int i;
   for (i = 0; i < nTrajets; i++) 
   {
     if (strcmp(trajets[i]->getDepart(), depart) == 0) 
     {
+      currentTrajet[cptTrajet] = trajets[i];
+      cptTrajet++;
       // Trouvé un trajet qui commence à 'depart'
       if (strcmp(trajets[i]->getArrivee(), arrivee) == 0) 
       {
         // C'est un trajet direct
-        cpt++;
-        cout << "Trajet trouvé " << cpt << ":" << endl;
-        trajets[i]->Afficher();
-        cout << endl;
+        
+        res = Parcours(cptTrajet, currentTrajet);
+
+        parcoursArray[cptParcours] = &res;
+        cptParcours++;
+
+        cptTrajet = 0;        
       } 
       else 
       {
@@ -107,11 +121,9 @@ void Catalogue::RechercheVoyageAvancee(const char * depart, const char * arrivee
       }
     }
   }
+  parcoursTrouves = ListeParcours(cptParcours, *parcoursArray);
 
-  if (!cpt)
-  {
-    cout << "Aucun trajet trouvé entre " << depart << " et " << arrivee << "." << endl;
-  }
+  return parcoursTrouves;
 
 };
 
