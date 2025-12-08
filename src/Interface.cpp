@@ -21,6 +21,7 @@ using namespace std;
 #include "Interface.h"
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
+#include "ListeParcours.h"
 
 //------------------------------------------------------------- Constantes
 #define MAX_LENGTH 100
@@ -95,9 +96,11 @@ void Interface::ajouterTrajetCompose() {
   cout << endl;
 
   int i;
-  for (i = 1; i <= l; i++) {
+  for (i = 1; i <= l; i++)
+  {
 
-    if (i > 1) {
+    if (i > 1) 
+    {
       strcpy(depart, arrivee);
     }
 
@@ -111,8 +114,11 @@ void Interface::ajouterTrajetCompose() {
 
     trajets[i - 1] = TrajetSimple(depart, arrivee, moyenTransport);
   }
+
   TrajetCompose *nouveauTrajet = new TrajetCompose(l, trajets);
   catalogue->AjouterTrajet(nouveauTrajet);
+
+  delete[] trajets;
   delete[] depart;
   delete[] arrivee;
   delete[] moyenTransport;
@@ -121,7 +127,6 @@ void Interface::ajouterTrajetCompose() {
 void Interface::suppTrajet()
 
 {
-
   catalogue->Afficher();
   int index;
   while (1)
@@ -139,8 +144,7 @@ void Interface::suppTrajet()
     {
       break;
     }      
-  }
-  
+  }  
   catalogue->SuppTrajet(index);
 }
 
@@ -153,7 +157,7 @@ void Interface::choixVilles() {
   cin.getline(depart, MAX_LENGTH);
   cout << endl;
 
-  cout << "Ville d'Arrivee : ";
+  cout << "Ville d'arrivee : ";
   cin.getline(arrivee, MAX_LENGTH);
   cout << endl;
 
@@ -167,7 +171,7 @@ void Interface::choixVilles() {
     cout << "Choix : ";
     cin >> methode;
     cout << endl;
-    if (cin.fail() || (methode != 1 && methode !=2)) // Gestion de l'erreur
+    if (cin.fail() || (methode != 1 && methode != 2)) // Gestion de l'erreur
       {
         cin.clear(); 
         cin.ignore(100, '\n'); 
@@ -178,19 +182,23 @@ void Interface::choixVilles() {
       break;
     }      
   }
+
+  ListeParcours parcoursTrouves;
   if (methode == 1)
   {
-    catalogue->RechercheVoyageSimple(depart, arrivee);
+    parcoursTrouves = catalogue->RechercheVoyageSimple(depart, arrivee);
   }
   else
   {
-    catalogue->RechercheVoyageAvancee(depart, arrivee);
+    parcoursTrouves = catalogue->RechercheVoyageAvancee(depart, arrivee);
   }
 
+  parcoursTrouves.Afficher();
+  
   delete[] depart;
   delete[] arrivee;
 }
-
+/*
 void Interface::choixParcours()
 // Afficher les trajets disponibles et demander à l'utilisateur de choisir un
 // parcours
@@ -198,6 +206,7 @@ void Interface::choixParcours()
   catalogue->Afficher();
   cout << "Choisissez votre parcours :" << endl;
 }
+*/
 
 void Interface::mainloop() {
   int choix = 1;
@@ -206,12 +215,10 @@ void Interface::mainloop() {
     cout << "--------- Menu Principal : ---------" << endl;
     cout << "1. Ajouter un trajet simple" << endl;
     cout << "2. Ajouter un trajet compose" << endl;
-    if (catalogue->getNTrajets() > 0) {
+    if (catalogue->getNTrajets() > 0) 
+    {
       cout << "3. Supprimer un trajet" << endl;
       cout << "4. Afficher le catalogue" << endl;
-    }
-
-    if (catalogue->getNTrajets() >= 2) {
       cout << "5. Rechercher un voyage" << endl;
     }
     cout << "0. Quitter" << endl;
@@ -235,7 +242,8 @@ void Interface::mainloop() {
       suppTrajet();
     else if (choix == 4 && catalogue->getNTrajets() > 0)
       catalogue->Afficher();
-    else if (choix == 5 && catalogue->getNTrajets() >= 2) {
+    else if (choix == 5 && catalogue->getNTrajets() > 0)
+    {
       choixVilles();
       cout << endl;
       // cout << "Parcours trouvés : " << endl;

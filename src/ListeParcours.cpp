@@ -29,10 +29,15 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 void ListeParcours::Afficher() const {
+  if (nParcours == 0) 
+  {
+    cout << "Aucun parcours trouvé." << endl;
+    return;
+  }
   cout << "-----Nombre de parcours : " << nParcours << " -----" << endl;
   int i;
   for (i = 0; i < nParcours; i++) {
-    parcours->Afficher();
+    parcours[i].Afficher();
     cout << endl;
   }
 }
