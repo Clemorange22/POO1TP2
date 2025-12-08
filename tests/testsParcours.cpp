@@ -30,6 +30,7 @@ int testsParcours() {
   delete ts1;
   delete ts2;
   delete ts3;
+  delete tc1;
 
   delete p1;
 
