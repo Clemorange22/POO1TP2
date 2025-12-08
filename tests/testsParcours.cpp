@@ -8,7 +8,7 @@
 
 int testsParcours() {
 
-  // Strcutures de test
+  // Structures de test
   TrajetSimple *ts1 =
       new TrajetSimple("Dol de Bretagne", "Narvik", "Char à voile");
   TrajetSimple *ts2 = new TrajetSimple("Narvik", "Tokyo", "Luge");

@@ -29,12 +29,11 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 void ListeParcours::Afficher() const {
-  if (nParcours == 0) 
-  {
+  if (nParcours == 0) {
     cout << "Aucun parcours trouvé." << endl;
     return;
   }
-  cout << "-----Nombre de parcours : " << nParcours << " -----" << endl;
+  cout << nParcours << " parcours trouvés :" << endl;
   int i;
   for (i = 0; i < nParcours; i++) {
     parcours[i].Afficher();
@@ -101,7 +100,7 @@ ListeParcours::ListeParcours()
   cout << "Appel au constructeur de <ListeParcours>" << endl;
 #endif
   nParcours = 0;
-  parcours = new Parcours[nParcours];
+  parcours = nullptr;
 }
 
 ListeParcours::~ListeParcours()
@@ -111,7 +110,9 @@ ListeParcours::~ListeParcours()
 #ifdef MAP
   cout << "Appel au destructeur de <ListeParcours>" << endl;
 #endif
-  delete[] parcours;
+  if (parcours != nullptr) {
+    delete[] parcours;
+  }
 } //----- Fin de ~ListeParcours
 
 //------------------------------------------------------------------ PRIVE
