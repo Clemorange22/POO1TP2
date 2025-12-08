@@ -27,11 +27,13 @@ class Trajet {
   //----------------------------------------------------------------- PUBLIC
 
 public:
-  virtual void Afficher() const = 0; // Méthodes virtuelles 
+  virtual void Afficher() const = 0; // Méthodes virtuelles
 
-  virtual const char* getDepart() const = 0;
-  
-  virtual const char* getArrivee() const = 0;
+  virtual const char *getDepart() const = 0;
+
+  virtual const char *getArrivee() const = 0;
+
+  virtual Trajet *Copy() const = 0;
 
   //------------------------------------------------- Surcharge d'opérateurs
   Trajet &operator=(const Trajet &unTrajet);

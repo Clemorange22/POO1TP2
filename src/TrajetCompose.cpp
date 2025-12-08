@@ -41,16 +41,17 @@ void TrajetCompose::Afficher() const
   cout << endl;
 } // Fin de Afficher
 
-const char* TrajetCompose::getDepart() const
+const char *TrajetCompose::getDepart() const
 
 {
   return trajets[0].getDepart();
 }
 
-const char* TrajetCompose::getArrivee() const
-{
+const char *TrajetCompose::getArrivee() const {
   return trajets[longueur - 1].getArrivee();
 }
+
+Trajet *TrajetCompose::Copy() const { return new TrajetCompose(*this); }
 
 //------------------------------------------------- Surcharge d'opérateurs
 TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)
@@ -59,6 +60,8 @@ TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)
 {
   if (this == &unTrajetCompose)
     return *this;
+
+  delete[] trajets;
 
   longueur = unTrajetCompose.longueur;
   trajets = new TrajetSimple[longueur];
@@ -88,7 +91,8 @@ TrajetCompose::TrajetCompose(const TrajetCompose &unTrajetCompose)
   }
 } //----- Fin de TrajetCompose (constructeur de copie)
 
-TrajetCompose::TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet)
+TrajetCompose::TrajetCompose(const int unLongueur,
+                             const TrajetSimple *unTrajets)
 // Algorithme :
 //
 {
@@ -100,7 +104,7 @@ TrajetCompose::TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet)
   longueur = unLongueur;
   int i;
   for (i = 0; i < longueur; i++) {
-    trajets[i] = unTrajet[i];
+    trajets[i] = unTrajets[i];
   }
 
 } //----- Fin de TrajetCompose

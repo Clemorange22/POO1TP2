@@ -52,15 +52,21 @@ void TrajetSimple::AfficherDestinationInline() const
   cout << " --(" << moyenTransport << ")--> " << arrivee;
 } // Fin de Afficher
 
-const char* TrajetSimple::getDepart() const
+const char *TrajetSimple::getDepart() const
+// Algorithme :
+//
 {
   return depart;
-}
+} // Fin de getDepart
 
-const char* TrajetSimple::getArrivee() const
+const char *TrajetSimple::getArrivee() const
+// Algorithme :
+//
 {
   return arrivee;
-}
+} // Fin de getArrivee
+
+Trajet *TrajetSimple::Copy() const { return new TrajetSimple(*this); }
 
 //------------------------------------------------- Surcharge d'opérateurs
 TrajetSimple &TrajetSimple::operator=(const TrajetSimple &unTrajetSimple)

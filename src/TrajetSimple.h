@@ -53,9 +53,23 @@ public:
   // Affiche la destination et le moyen de transport du trajet seulement, avec
   // retour à la ligne
 
-  const char* getDepart() const;
-  
-  const char* getArrivee() const;
+  const char *getDepart() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  const char *getArrivee() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  Trajet *Copy() const;
+  // Mode d'emploi :
+  //
+  // Contrat : Crée une copie de l'objet par allocation dynamique et renvoie un
+  // pointeur vers cette copie
 
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetSimple &operator=(const TrajetSimple &unTrajetSimple);

@@ -45,6 +45,9 @@ ListeParcours &ListeParcours::operator=(const ListeParcours &unListeParcours)
   if (this == &unListeParcours) {
     return *this;
   }
+
+  delete[] parcours;
+
   nParcours = unListeParcours.nParcours;
   parcours = new Parcours[nParcours];
   int i;

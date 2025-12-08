@@ -37,10 +37,24 @@ public:
   //
   void Afficher() const;
 
-  const char* getDepart() const;
+  const char *getDepart() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
-  const char* getArrivee() const;
-  
+  const char *getArrivee() const;
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  Trajet *Copy() const;
+  // Mode d'emploi :
+  //
+  // Contrat : Crée une copie de l'objet par allocation dynamique et renvoie un
+  // pointeur vers cette copie
+
   //------------------------------------------------- Surcharge d'opérateurs
   TrajetCompose &operator=(const TrajetCompose &unTrajetCompose);
   // Mode d'emploi :
@@ -61,7 +75,7 @@ public:
   // Contrat :
   //
 
-  TrajetCompose(const int unLongueur, const TrajetSimple *unTrajet);
+  TrajetCompose(const int unLongueur, const TrajetSimple *unTrajets);
   // Mode d'emploi :
   //
   // Contrat :

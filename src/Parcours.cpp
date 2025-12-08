@@ -34,7 +34,7 @@ void Parcours::Afficher() const {
   cout << "Nombre de trajets : " << nTrajets << endl;
   int i;
   for (i = 0; i < nTrajets; i++) {
-    cout << "-----Trajet " << i << " -----" << endl;
+    cout << "----- Trajet " << i << " -----" << endl;
     trajets[i]->Afficher();
   }
 }
@@ -48,11 +48,13 @@ Parcours &Parcours::operator=(const Parcours &unParcours)
     return *this;
   }
 
+  delete[] trajets;
+
   nTrajets = unParcours.nTrajets;
   trajets = new Trajet *[nTrajets];
   int i;
   for (i = 0; i < nTrajets; i++) {
-    trajets[i] = unParcours.trajets[i];
+    trajets[i] = unParcours.trajets[i]->Copy();
   }
   return *this;
 } //----- Fin de operator =
@@ -69,7 +71,7 @@ Parcours::Parcours(const Parcours &unParcours)
   trajets = new Trajet *[nTrajets];
   int i;
   for (i = 0; i < nTrajets; i++) {
-    trajets[i] = unParcours.trajets[i];
+    trajets[i] = unParcours.trajets[i]->Copy();
   }
 } //----- Fin de Parcours (constructeur de copie)
 
@@ -94,7 +96,7 @@ Parcours::Parcours()
 #ifdef MAP
   cout << "Appel au constructeur de <Parcours>" << endl;
 #endif
-  trajets = new Trajet *[0];
+  trajets = nullptr;
   nTrajets = 0;
 }
 
