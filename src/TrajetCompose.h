@@ -36,6 +36,9 @@ public:
   // Contrat :
   //
   void Afficher() const;
+  // Mode d'emploi :
+  // Affiche le trajet composé sur la sortie standard avec un retour à la ligne.
+  // a --(b)--> c --(d)--> e
 
   const char *getDepart() const;
   // Mode d'emploi :

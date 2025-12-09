@@ -20,6 +20,7 @@ trajets
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
 // Permet d'en dériver différent types de trajets par héritage
+// Classe abstraite
 //
 //------------------------------------------------------------------------
 

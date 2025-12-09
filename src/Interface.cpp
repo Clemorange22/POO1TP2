@@ -191,7 +191,7 @@ void Interface::suppTrajet()
     if (index < 1 || index > catalogue->getNTrajets()) // Gestion de l'erreur
     {
       cout << "Choix invalide, veuillez reessayer." << endl << endl;
-    } else {
+    } else { 
       catalogue->SuppTrajet(index);
       break;
     }

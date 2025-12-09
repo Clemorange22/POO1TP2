@@ -37,6 +37,11 @@ public:
   void Afficher() const;
   // Mode d'emploi :
   // Affiche tous les parcours contenus dans la liste.
+  // ex : 
+  // 1 parcours trouvés :
+  // Parcours long de 2 trajets :
+  // Trajet 1: a --(b)--> c
+  // Trajet 2: c --(d)--> e --(f)--> g
   //
   // Contrat :
   //

@@ -32,7 +32,6 @@ using namespace std;
 void TrajetCompose::Afficher() const
 //
 {
-  // cout << "Longueur : " << longueur << endl;
   trajets[0].AfficherInline();
   int i;
   for (i = 1; i < longueur; i++) {
