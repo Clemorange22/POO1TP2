@@ -68,7 +68,7 @@ ListeParcours Catalogue::RechercheVoyageSimple(const char *depart,
 
 {
   int cptParcours = 0;
-  Parcours parcoursArray[100];
+  Parcours *parcoursArray = new Parcours[nTrajets];
   ListeParcours parcoursTrouves;
 
   int i;
@@ -84,6 +84,7 @@ ListeParcours Catalogue::RechercheVoyageSimple(const char *depart,
     pt = pt->next;
   }
   parcoursTrouves = ListeParcours(cptParcours, parcoursArray);
+  delete[] parcoursArray;
 
   return parcoursTrouves;
 };
