@@ -212,6 +212,7 @@ void Catalogue::AjouterTrajet(Trajet *nouveauTrajet)
 };
 
 void Catalogue::Afficher() const {
+  cout << "Le catalogue contient " << nTrajets << " trajets :" << endl;
   int i;
   Element *pt = listeTrajets;
   for (i = 0; i < nTrajets; i++) {
@@ -219,6 +220,7 @@ void Catalogue::Afficher() const {
     pt->trajet->Afficher();
     pt = pt->next;
   }
+  cout << endl;
 };
 
 int Catalogue::getNTrajets() const { return nTrajets; };
