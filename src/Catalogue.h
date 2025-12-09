@@ -25,7 +25,7 @@ typedef struct Element {
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
-//
+// Permet la gestion d'un catalogue de trajets (ajout, suppression, recherche)
 //
 //------------------------------------------------------------------------
 

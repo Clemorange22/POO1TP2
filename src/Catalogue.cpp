@@ -110,7 +110,8 @@ ListeParcours Catalogue::RechercheVoyageAvancee(
   // S'il s'agit de la première exécution, on alloue dynamiquement les tableaux
   // permettant de conserver l'état de la recherche d'un appel à l'autre
   bool first = false;
-  if (utilise == nullptr) {
+  if (utilise == nullptr) 
+  {
     first = true;
     utilise = new bool[nTrajets];
     for (int i = 0; i < nTrajets; i++)
