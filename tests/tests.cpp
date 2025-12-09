@@ -1,3 +1,4 @@
+#include "testsListeParcours.h"
 #include "testsParcours.h"
 #include "testsTrajetCompose.h"
 #include "testsTrajetSimple.h"
@@ -17,6 +18,8 @@ int main() {
   count += testsTrajetCompose();
   printTestName("Parcours");
   count += testsParcours();
+  printTestName("ListeParcours");
+  count += testsListeParcours();
 
   return count;
 }

@@ -31,10 +31,10 @@ using namespace std;
 //} //----- Fin de Méthode
 
 void Parcours::Afficher() const {
-  cout << "Nombre de trajets : " << nTrajets << endl;
+  cout << "Parcours long de " << nTrajets << " trajets :" << endl;
   int i;
   for (i = 0; i < nTrajets; i++) {
-    cout << "----- Trajet " << i + 1 << " -----" << endl;
+    cout << "Trajet " << i + 1 << ": ";
     trajets[i]->Afficher();
   }
 }
