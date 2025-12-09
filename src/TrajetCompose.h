@@ -39,18 +39,27 @@ public:
 
   const char *getDepart() const;
   // Mode d'emploi :
+  // Renvoie un pointeur vers la chaîne de caractères représentant la ville de
+  // départ.
   //
   // Contrat :
   //
 
   const char *getArrivee() const;
   // Mode d'emploi :
+  // Renvoie un pointeur vers la chaîne de caractères représentant la ville
+  // d'arrivée.
   //
   // Contrat :
   //
 
   Trajet *Copy() const;
   // Mode d'emploi :
+  // Crée une copie profonde du TrajetCompose
+  //
+  // Contrat :
+  // L'appelant est responsable de la gestion de la mémoire de l'objet retourné
+  // (delete).
   //
   // Contrat : Crée une copie de l'objet par allocation dynamique et renvoie un
   // pointeur vers cette copie
@@ -77,8 +86,11 @@ public:
 
   TrajetCompose(const int unLongueur, const TrajetSimple *unTrajets);
   // Mode d'emploi :
+  // Construit un TrajetCompose à partir d'un tableau de TrajetSimple.
   //
   // Contrat :
+  // unLongueur doit correspondre à la taille du tableau unTrajets.
+  // Les trajets simples sont copiés.
   //
 
   virtual ~TrajetCompose();

@@ -27,13 +27,39 @@ class Trajet {
   //----------------------------------------------------------------- PUBLIC
 
 public:
-  virtual void Afficher() const = 0; // Méthodes virtuelles
+  // Méthodes virtuelles, communes à tous les trajets mais dont l'implémentation
+  // est différente
+  virtual void Afficher() const = 0;
+  // Mode d'emploi :
+  // Affiche le trajet sur la sortie standard.
+  //
+  // Contrat :
+  // Méthode virtuelle pure.
+  //
 
   virtual const char *getDepart() const = 0;
+  // Mode d'emploi :
+  // Renvoie la ville de départ.
+  //
+  // Contrat :
+  // Méthode virtuelle pure.
+  //
 
   virtual const char *getArrivee() const = 0;
+  // Mode d'emploi :
+  // Renvoie la ville d'arrivée.
+  //
+  // Contrat :
+  // Méthode virtuelle pure.
+  //
 
   virtual Trajet *Copy() const = 0;
+  // Mode d'emploi :
+  // Crée une copie de l'objet.
+  //
+  // Contrat :
+  // Méthode virtuelle pure.
+  //
 
   //------------------------------------------------- Surcharge d'opérateurs
   Trajet &operator=(const Trajet &unTrajet);
@@ -57,8 +83,9 @@ public:
 
   virtual ~Trajet();
   // Mode d'emploi :
-  //
+  // Destructeur virtuel
   // Contrat :
+  // Assure la destruction correcte des objets dérivés.
   //
 
   //------------------------------------------------------------------ PRIVE

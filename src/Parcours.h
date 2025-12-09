@@ -35,6 +35,11 @@ public:
   //
 
   void Afficher() const;
+  // Mode d'emploi :
+  // Affiche les détails du parcours (nombre de trajets et liste des trajets)
+  //
+  // Contrat :
+  //
 
   //------------------------------------------------- Surcharge d'opérateurs
   Parcours &operator=(const Parcours &unParcours);
@@ -52,8 +57,10 @@ public:
 
   Parcours(int unNTrajets, Trajet *unTrajets[]);
   // Mode d'emploi :
-  //  Crée un parcours composé des trajets passés en argument
+  // Crée un parcours composé des trajets passés en argument.
+  //
   // Contrat :
+  // Les trajets sont copiés (copie profonde).
   //
 
   Parcours();
@@ -61,6 +68,7 @@ public:
 
   virtual ~Parcours();
   // Mode d'emploi :
+  // Destructeur. Libère la mémoire allouée pour les trajets.
   //
   // Contrat :
   //

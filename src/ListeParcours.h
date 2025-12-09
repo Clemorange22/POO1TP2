@@ -35,6 +35,11 @@ public:
   //
 
   void Afficher() const;
+  // Mode d'emploi :
+  // Affiche tous les parcours contenus dans la liste.
+  //
+  // Contrat :
+  //
 
   //------------------------------------------------- Surcharge d'opérateurs
   ListeParcours &operator=(const ListeParcours &unListeParcours);
@@ -52,8 +57,10 @@ public:
 
   ListeParcours(int unNParcours, Parcours *unParcours);
   // Mode d'emploi :
+  // Construit une ListeParcours à partir d'un tableau de Parcours.
   //
   // Contrat :
+  // Les parcours sont copiés en profondeur.
   //
 
   ListeParcours();

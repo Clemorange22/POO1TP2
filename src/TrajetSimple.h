@@ -1,5 +1,6 @@
 /*************************************************************************
-                           TrajetSimple  -  description
+                           TrajetSimple  -  Un trajet avec un départ, un moyende
+transport et une arrivée
                              -------------------
     début                : 18/11/2025
     copyright            : (C) 2025 par Clément BOITTIN et Sami SHAAR
@@ -19,7 +20,7 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetSimple>
-//
+// Représente un trajet d'un endroit à un autre avec un moyen de transport donné
 //
 //------------------------------------------------------------------------
 
@@ -36,37 +37,51 @@ public:
 
   void Afficher() const;
   // Mode d'emploi :
+  // Affiche le trajet simple sur la sortie standard avec un retour à la ligne.
+  // Format : Depart --(MoyenTransport)--> Arrivee
   //
   // Contrat :
-  // Affiche les détails du trajet avec un retour à la ligne
+  //
 
   void AfficherInline() const;
   // Mode d'emploi :
+  // Affiche le trajet simple sur la sortie standard sans retour à la ligne.
+  // Format : Depart --(MoyenTransport)--> Arrivee
   //
   // Contrat :
-  // Affiche les détails du trajet sans retour à la ligne
+  //
 
   void AfficherDestinationInline() const;
   // Mode d'emploi :
+  // Affiche la destination et le moyen de transport sans retour à la ligne.
+  // Format : --(MoyenTransport)--> Arrivee
   //
   // Contrat :
-  // Affiche la destination et le moyen de transport du trajet seulement, avec
-  // retour à la ligne
+  //
 
   const char *getDepart() const;
   // Mode d'emploi :
+  // Renvoie un pointeur vers la chaîne de caractères représentant la ville de
+  // départ.
   //
   // Contrat :
   //
 
   const char *getArrivee() const;
   // Mode d'emploi :
+  // Renvoie un pointeur vers la chaîne de caractères représentant la ville
+  // d'arrivée.
   //
   // Contrat :
   //
 
   Trajet *Copy() const;
   // Mode d'emploi :
+  // Crée une copie profonde du TrajetSimple.
+  //
+  // Contrat :
+  // L'appelant est responsable de la gestion de la mémoire de l'objet retourné
+  // (delete).
   //
   // Contrat : Crée une copie de l'objet par allocation dynamique et renvoie un
   // pointeur vers cette copie
@@ -94,14 +109,19 @@ public:
   TrajetSimple(const char *unDepart, const char *unArrivee,
                const char *unMoyenTransport);
   // Mode d'emploi :
+  // Construit un TrajetSimple avec les villes de départ, d'arrivée et le moyen
+  // de transport spécifiés.
   //
   // Contrat :
+  // Les chaînes de caractères sont copiées profondément.
   //
 
   virtual ~TrajetSimple();
   // Mode d'emploi :
   //
+  //
   // Contrat :
+  //
   //
 
   //------------------------------------------------------------------ PRIVE

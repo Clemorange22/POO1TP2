@@ -36,16 +36,53 @@ public:
   //
 
   void ajouterTrajet();
+  // Mode d'emploi :
+  // Demande à l'utilisateur s'il souhaite ajouter un trajet simple ou composé,
+  // puis appelle la méthode correspondante.
+  //
+  // Contrat :
+  //
 
   void ajouterTrajetSimple();
+  // Mode d'emploi :
+  // Guide l'utilisateur pour la saisie des informations d'un trajet simple
+  // et l'ajoute au catalogue.
+  //
+  // Contrat :
+  //
 
   void ajouterTrajetCompose();
+  // Mode d'emploi :
+  // Guide l'utilisateur pour la saisie des informations d'un trajet composé
+  // (succession de trajets simples) et l'ajoute au catalogue.
+  //
+  // Contrat :
+  //
 
   void suppTrajet();
+  // Mode d'emploi :
+  // Affiche la liste des trajets et demande à l'utilisateur l'index du trajet à
+  // supprimer.
+  //
+  // Contrat :
+  //
 
   void choixVilles();
+  // Mode d'emploi :
+  // Demande à l'utilisateur les villes de départ et d'arrivée, ainsi que le
+  // type de recherche (simple ou avancée), puis lance la recherche et affiche
+  // les résultats.
+  //
+  // Contrat :
+  //
 
   void mainloop();
+  // Mode d'emploi :
+  // Boucle principale de l'application. Affiche le menu et gère les
+  // interactions utilisateur.
+  //
+  // Contrat :
+  //
 
   //------------------------------------------------- Surcharge d'opérateurs
   Interface &operator=(const Interface &unInterface);
