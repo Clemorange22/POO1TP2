@@ -94,6 +94,7 @@ void Interface::ajouterTrajetSimple()
     }
   }
 
+  delete nouveauTrajet;
   delete[] depart;
   delete[] arrivee;
   delete[] moyenTransport;
@@ -166,6 +167,7 @@ void Interface::ajouterTrajetCompose()
     }
   }
 
+  delete nouveauTrajet;
   delete[] trajets;
   delete[] depart;
   delete[] arrivee;
