@@ -12,11 +12,16 @@
 #define CATALOGUE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Trajet.h"
 #include "ListeParcours.h"
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+
+typedef struct Element {
+  Trajet *trajet = nullptr;
+  Element *next = nullptr;
+} Element;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
@@ -36,11 +41,16 @@ public:
   //
   void SuppTrajet(int index);
 
-  ListeParcours RechercheVoyageSimple(const char * depart, const char * arrivee);
+  ListeParcours RechercheVoyageSimple(const char *depart, const char *arrivee);
 
-  ListeParcours RechercheVoyageAvancee(const char * depart, const char * arrivee);
+  ListeParcours RechercheVoyageAvancee(const char *depart,
+                                       const char *arrivee) const;
 
-  void AjouterTrajet(Trajet * nouveauTrajet);
+  ListeParcours RechercheVoyageAvancee(const char *depart, const char *arrivee,
+                                       bool utilise[], int **trajetsTrouves,
+                                       int *nTrajetsTrouves) const;
+
+  void AjouterTrajet(Trajet *nouveauTrajet);
 
   void Afficher() const;
 
@@ -78,9 +88,10 @@ public:
 
 protected:
   //----------------------------------------------------- Méthodes protégées
+  Trajet *getTrajet(int i) const;
 
   //----------------------------------------------------- Attributs protégés
-  Trajet **trajets;
+  Element *listeTrajets;
   int nTrajets;
 };
 
