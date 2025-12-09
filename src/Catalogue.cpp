@@ -146,14 +146,14 @@ ListeParcours Catalogue::RechercheVoyageAvancee(
         }
         (*nTrajetsTrouves)++;
 
-        // On revient à l'étape précédente pour chercher d'autres trajets
-        trajetsTrouves[*nTrajetsTrouves][j] = -1;
-        utilise[i] = false;
       } else {
         // Rechercher des trajets à partir de l'arrivée de ce trajet
         RechercheVoyageAvancee(getTrajet(i)->getArrivee(), arrivee, utilise,
                                trajetsTrouves, nTrajetsTrouves);
       }
+      // On revient à l'étape précédente pour chercher d'autres trajets
+      trajetsTrouves[*nTrajetsTrouves][j] = -1;
+      utilise[i] = false;
     }
   }
 
