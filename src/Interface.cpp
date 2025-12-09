@@ -34,51 +34,98 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-void Interface::ajouterTrajetSimple() {
+
+
+void Interface::ajouterTrajet()
+// Algorithme :
+// Demander le type de trajet (simple/compose) pour appeler la méthode correspondante
+  {
+    char choix;
+    cout << "Trajet Simple ou Compose (s/c) ? ";
+    cin >> choix;
+    if (choix == 's' || choix == 'S')
+    {
+        ajouterTrajetSimple();
+    }
+    else if (choix == 'c' || choix == 'C')
+    {
+        ajouterTrajetCompose();
+    }
+    else 
+    {
+        cout << "Choix invalide, veuillez reessayer." << endl;
+        ajouterTrajet();
+    }
+  }
+
+
+void Interface::ajouterTrajetSimple()
+// Algorithme :
+// Demander les informations du trajet simple
+// Si elles sont confirmées, créer le trajet et l'ajouter au catalogue
+{
   char *depart = new char[MAX_LENGTH];
   char *moyenTransport = new char[MAX_LENGTH];
   char *arrivee = new char[MAX_LENGTH];
 
   cout << "Ville de depart : ";
-  cin.ignore();  
-  cin.getline(depart, MAX_LENGTH);
+  cin >> depart;
   cout << endl;
 
   cout << "Moyen de Transport : ";
-  cin.getline(moyenTransport, MAX_LENGTH);
+  cin >> moyenTransport;
   cout << endl;
 
   cout << "Ville d'Arrivee : ";
-  cin.getline(arrivee, MAX_LENGTH);
+  cin >> arrivee;
   cout << endl;
 
-  TrajetSimple *nouveauTrajet =
-      new TrajetSimple(depart, arrivee, moyenTransport);
-  catalogue->AjouterTrajet(nouveauTrajet);
-
+  TrajetSimple* nouveauTrajet = new TrajetSimple(depart, arrivee, moyenTransport);
+  
+  while (1) // Gestion de la confirmation
+  {
+    nouveauTrajet->Afficher();
+    cout << "Ce trajet vous semble correct ? (o/n)";
+    char confirmation;
+    cin >> confirmation;
+    if (confirmation == 'n')
+    {
+      cout << "Trajet NON ajouté." << endl << endl;
+      break;
+    }
+    else if (confirmation == 'o') {
+      cout << "Trajet ajouté." << endl << endl;
+      catalogue->AjouterTrajet(nouveauTrajet);
+      break;    
+    }
+    else
+    {
+      cout << "Choix invalide, veuillez reessayer." << endl << endl;
+    }
+  }
+  
   delete[] depart;
   delete[] arrivee;
   delete[] moyenTransport;
 }
 
-void Interface::ajouterTrajetCompose() {
-  int l;
-  while (1)
-  {
-    cout << "Longueur du Trajet Compose : ";
-    cin >> l;
-    cout << endl;
-    if (cin.fail() || l < 2) // Gestion de l'erreur
-      {
-        cin.clear(); 
-        cin.ignore(100, '\n'); 
-        cout << "Choix invalide, veuillez reessayer." << endl << endl;
-      }
-    else
+
+void Interface::ajouterTrajetCompose()
+// Algorithme :
+// Demander les informations du trajet composé
+// Si elles sont confirmées, créer le trajet et l'ajouter au catalogue
+ {  
+  char carl;
+  cout << "Longueur du Trajet Compose (entre 2 et 9 inclus): ";
+  cin >> carl;
+  cout << endl;
+  int l = carl - 48;
+  if (l < 2 || l > 9) // Gestion de l'erreur
     {
-      break;
+      cout << "Choix invalide, veuillez reessayer." << endl << endl;
+      ajouterTrajetCompose();
+      return;
     }
-  }
 
   TrajetSimple *trajets = new TrajetSimple[l];
 
@@ -91,32 +138,49 @@ void Interface::ajouterTrajetCompose() {
        << endl;
        
   cout << "Ville de depart 1 : ";
-  cin.ignore();
-  cin.getline(depart, MAX_LENGTH);
+  cin >> depart;
   cout << endl;
-
   int i;
   for (i = 1; i <= l; i++)
   {
-
     if (i > 1) 
     {
-      strcpy(depart, arrivee);
+      strcpy(depart, arrivee); // La ville de depart du trajet i est la ville d'arrivee du trajet i-1
     }
 
     cout << "Moyen de Transport " << i << " : ";
-    cin.getline(moyenTransport, MAX_LENGTH);
+    cin >> moyenTransport;
     cout << endl;
 
     cout << "Ville d'Arrivee " << i << " : ";
-    cin.getline(arrivee, MAX_LENGTH);
+    cin >> arrivee;
     cout << endl;
 
     trajets[i - 1] = TrajetSimple(depart, arrivee, moyenTransport);
   }
 
   TrajetCompose *nouveauTrajet = new TrajetCompose(l, trajets);
-  catalogue->AjouterTrajet(nouveauTrajet);
+  while (1) // Gestion de la confirmation
+  {  
+    nouveauTrajet->Afficher();
+    cout << "Ce trajet vous semble correct ? (o/n)";
+    char confirmation;
+    cin >> confirmation;
+    if (confirmation == 'n')
+    {
+      cout << "Trajet NON ajouté." << endl << endl;
+      break;
+    }
+    else if (confirmation == 'o') {
+      cout << "Trajet ajouté." << endl << endl;
+      catalogue->AjouterTrajet(nouveauTrajet); 
+      break;
+    }
+    else
+    {
+      cout << "Choix invalide, veuillez reessayer." << endl << endl;
+    }
+  }
 
   delete[] trajets;
   delete[] depart;
@@ -125,66 +189,85 @@ void Interface::ajouterTrajetCompose() {
 }
 
 void Interface::suppTrajet()
-
+// Algorithme :
+// Afficher le catalogue
+// Demander l'index du trajet à supprimer
+// S'il est correct, le supprimer du catalogue
 {
   catalogue->Afficher();
+  char carIndex;
   int index;
+
   while (1)
   {
-    cout << "Index du trajet a supprimer : ";
-    cin >> index;
+    cout << "Index du trajet a supprimer (entre 1 et " << catalogue->getNTrajets() << ") : ";
+    cin >> carIndex;
+    index = carIndex - 48; // Conversion de char à int (char 1 = 49 en ASCII)
     cout << endl;
-    if (cin.fail() || index < 1 || index > catalogue->getNTrajets()) // Gestion de l'erreur
-      {
-        cin.clear(); 
-        cin.ignore(100, '\n'); 
+    if ( index < 1 || index > catalogue->getNTrajets()) // Gestion de l'erreur
+      { 
         cout << "Choix invalide, veuillez reessayer." << endl << endl;
       }
     else
     {
+      catalogue->SuppTrajet(index);
       break;
-    }      
+    }   
   }  
-  catalogue->SuppTrajet(index);
 }
 
-void Interface::choixVilles() {
+
+void Interface::choixVilles()
+// Algorithme :
+// Demander les villes de départ et d'arrivée ainsi que la méthode de recherche
+// Lancer la recherche dans le catalogue
+{
   char *depart = new char[MAX_LENGTH];
   char *arrivee = new char[MAX_LENGTH];
+  char Methode;
 
   cout << "Ville de depart : ";
-  cin.ignore();
-  cin.getline(depart, MAX_LENGTH);
+  cin >> depart;
   cout << endl;
 
   cout << "Ville d'arrivee : ";
-  cin.getline(arrivee, MAX_LENGTH);
+  cin >> arrivee;
   cout << endl;
 
-
-  cout << "Méthode de recherche :" << endl;
-  cout << "1. Simple" << endl;
-  cout << "2. Avancée" << endl;
-  int methode;
-  while (1)
+  while (1) // Gestion de la méthode de recherche et des erreurs associées
   {
-    cout << "Choix : ";
-    cin >> methode;
+    cout << "Méthode de recherche Simple ou Avancée : (s/a)";
+    cin >> Methode;
     cout << endl;
-    if (cin.fail() || (methode != 1 && methode != 2)) // Gestion de l'erreur
-      {
-        cin.clear(); 
-        cin.ignore(100, '\n'); 
+    if (Methode != 's' && Methode != 'a') // Gestion de l'erreur
+      { 
         cout << "Choix invalide, veuillez reessayer." << endl << endl;
       }
     else
     {
-      break;
+      cout << "Rechercher les trajets de " << depart << " a " << arrivee << " en recherche " << Methode << endl;
+      char confirmation;
+      cout << "Confirmer ? (o/n)";
+      cin >> confirmation;
+      cout << endl;
+      if (confirmation == 'o')
+      {
+        break;
+      }
+      else if (confirmation == 'n')
+      {
+        cout << "Recherche annulee" << endl << endl;
+        return;
+      }
+      else
+      {
+        cout << "Choix invalide, veuillez reessayer." << endl << endl;
+      }
     }      
   }
 
   ListeParcours parcoursTrouves;
-  if (methode == 1)
+  if (Methode == 's')
   {
     parcoursTrouves = catalogue->RechercheVoyageSimple(depart, arrivee);
   }
@@ -198,28 +281,23 @@ void Interface::choixVilles() {
   delete[] depart;
   delete[] arrivee;
 }
-/*
-void Interface::choixParcours()
-// Afficher les trajets disponibles et demander à l'utilisateur de choisir un
-// parcours
-{
-  catalogue->Afficher();
-  cout << "Choisissez votre parcours :" << endl;
-}
-*/
 
-void Interface::mainloop() {
-  int choix = 1;
-  while(choix)
+
+void Interface::mainloop()
+// Algorithme :
+// Afficher le menu principal
+// Gérer les choix de l'utilisateur
+{
+  char choix = '1';
+  while(choix != '0')
   {
     cout << "--------- Menu Principal : ---------" << endl;
-    cout << "1. Ajouter un trajet simple" << endl;
-    cout << "2. Ajouter un trajet compose" << endl;
+    cout << "1. Ajouter un trajet" << endl;
     if (catalogue->getNTrajets() > 0) 
     {
-      cout << "3. Supprimer un trajet" << endl;
-      cout << "4. Afficher le catalogue" << endl;
-      cout << "5. Rechercher un voyage" << endl;
+      cout << "2. Supprimer un trajet" << endl;
+      cout << "3. Afficher le catalogue" << endl;
+      cout << "4. Rechercher un voyage" << endl;
     }
     cout << "0. Quitter" << endl;
     cout << "------------------------------------" << endl;
@@ -227,29 +305,23 @@ void Interface::mainloop() {
     cout << "Entrez votre choix : ";
     cin >> choix;
     cout << endl;
-    if (cin.fail())
+    if (choix == '1')
     {
-      cin.clear(); // clear the fail state
-      cin.ignore(100, '\n'); // discard invalid input
-      cout << "Choix invalide, veuillez reessayer." << endl << endl;
-      choix = 1;
+      ajouterTrajet();
     }
-    else if (choix == 1)
-      ajouterTrajetSimple();
-    else if (choix == 2)
-      ajouterTrajetCompose();
-    else if (choix == 3 && catalogue->getNTrajets() > 0)
+    else if (choix == '2')
+    {
       suppTrajet();
-    else if (choix == 4 && catalogue->getNTrajets() > 0)
+    }
+    else if (choix == '3' && catalogue->getNTrajets() > 0)
+    {
       catalogue->Afficher();
-    else if (choix == 5 && catalogue->getNTrajets() > 0)
+    }
+    else if (choix == '4' && catalogue->getNTrajets() > 0)
     {
       choixVilles();
-      cout << endl;
-      // cout << "Parcours trouvés : " << endl;
-      // choixParcours();
     }
-    else if (choix == 0)
+    else if (choix == '0')
       cout << "Au revoir !" << endl;
     else
       cout << "Choix invalide, veuillez reessayer." << endl << endl;

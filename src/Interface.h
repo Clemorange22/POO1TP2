@@ -20,6 +20,7 @@
 //------------------------------------------------------------------------
 // Rôle de la classe <Interface>
 //
+// Permet d'interagir avec l'utilisateur via une interface en ligne de commande
 //
 //------------------------------------------------------------------------
 
@@ -34,6 +35,8 @@ public:
   // Contrat :
   //
 
+  void ajouterTrajet();
+
   void ajouterTrajetSimple();
 
   void ajouterTrajetCompose();
@@ -41,8 +44,6 @@ public:
   void suppTrajet();
 
   void choixVilles();
-
-  void choixParcours();
 
   void mainloop();
 
