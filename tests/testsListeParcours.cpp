@@ -2,8 +2,12 @@
 #include "Parcours.h"
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
+#include <iostream>
+
+using namespace std;
 
 int testsListeParcours() {
+  cout << "--- Initialisation des données de test ---" << endl;
   // Structures de test
   TrajetSimple *ts1 =
       new TrajetSimple("Dol de Bretagne", "Narvik", "Char à voile");
@@ -39,30 +43,36 @@ int testsListeParcours() {
   delete tc2;
 
   Parcours parcours[2] = {*p1, *p2};
-  // Constructeur par défault
+
+  cout << "--- Test Constructeur avec arguments ---" << endl;
   ListeParcours *lp1 = new ListeParcours(2, parcours);
-  // Constructeur de copie
+
+  cout << "--- Test Constructeur de copie ---" << endl;
   ListeParcours *lp2 = new ListeParcours(*lp1);
 
-  // Assignation =
+  cout << "--- Test Opérateur d'affectation ---" << endl;
   ListeParcours *lp3 = new ListeParcours;
   *lp3 = *lp2;
 
   delete p1;
   delete p2;
 
-  // Affichage et copie en profondeur
-
+  cout << "--- Test Afficher (lp1) ---" << endl;
   lp1->Afficher();
 
+  cout << "--- Nettoyage lp1 ---" << endl;
   delete lp1;
 
+  cout << "--- Test Afficher (lp2 - copie de lp1) ---" << endl;
   lp2->Afficher();
 
+  cout << "--- Nettoyage lp2 ---" << endl;
   delete lp2;
 
+  cout << "--- Test Afficher (lp3 - affectation de lp2) ---" << endl;
   lp3->Afficher();
 
+  cout << "--- Nettoyage lp3 ---" << endl;
   delete lp3;
 
   return 0;

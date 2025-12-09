@@ -2,6 +2,7 @@
 #include "testsParcours.h"
 #include "testsTrajetCompose.h"
 #include "testsTrajetSimple.h"
+#include "testsCatalogue.h"
 #include <iostream>
 
 using namespace std;
@@ -20,6 +21,8 @@ int main() {
   count += testsParcours();
   printTestName("ListeParcours");
   count += testsListeParcours();
+  printTestName("Catalogue");
+  count += testsCatalogue();
 
   return count;
 }
