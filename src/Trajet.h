@@ -17,6 +17,8 @@ trajets
 
 //------------------------------------------------------------------ Types
 
+enum TypeTrajet : int { TOUS, SIMPLE, COMPOSE };
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
 // Permet d'en dériver différent types de trajets par héritage

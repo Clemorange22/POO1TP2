@@ -14,13 +14,21 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <cstring>
+#include <fstream>
 #include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
 #include "ListeParcours.h"
 #include "Parcours.h"
 #include "Trajet.h"
+#include "TrajetCompose.h"
+#include "TrajetSimple.h"
+
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -110,8 +118,7 @@ ListeParcours Catalogue::RechercheVoyageAvancee(
   // S'il s'agit de la première exécution, on alloue dynamiquement les tableaux
   // permettant de conserver l'état de la recherche d'un appel à l'autre
   bool first = false;
-  if (utilise == nullptr) 
-  {
+  if (utilise == nullptr) {
     first = true;
     utilise = new bool[nTrajets];
     for (int i = 0; i < nTrajets; i++)
@@ -226,6 +233,61 @@ void Catalogue::Afficher() const {
 };
 
 int Catalogue::getNTrajets() const { return nTrajets; };
+
+statutCharger Catalogue::ChargerTxt(const char *relpath, FiltreTrajets filtre) {
+  ifstream file(relpath);
+  if (file.is_open()) {
+    char c;
+    vector<Trajet *> trajets;
+    vector<TrajetSimple> trajetsTmp;
+    int etape = 0;
+    string depart = "";
+    string moyenTransport = "";
+    string arrivee = "";
+    while (!file.eof()) {
+      file.get(c);
+      switch (c) {
+      case ',':
+        if (trajetsTmp.size() > 0) {
+          etape = 1 + etape % 2;
+        } else {
+          etape = (etape + 1) % 3;
+        }
+        break;
+      case '\n':
+
+        if (trajetsTmp.size() > 1) {
+          trajetsTmp.push_back(TrajetSimple(depart.c_str(), arrivee.c_str(),
+                                            moyenTransport.c_str()));
+          depart.clear();
+          arrivee.clear();
+          moyenTransport.clear();
+          TrajetCompose *tc =
+              new TrajetCompose(trajetsTmp.size(), trajetsTmp.data());
+        } else {
+        }
+        break;
+      default:
+        switch (etape) {
+        case 0:
+          depart += c;
+          break;
+        case 1:
+          moyenTransport += c;
+          break;
+        case 2:
+          arrivee += c;
+          break;
+        }
+        break;
+      }
+    }
+  } else {
+    return FICHIER_INTROUVABLE;
+  }
+
+  return OK;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 Catalogue &Catalogue::operator=(const Catalogue &unCatalogue)

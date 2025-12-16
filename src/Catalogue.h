@@ -23,6 +23,16 @@ typedef struct Element {
   Element *next = nullptr;
 } Element;
 
+typedef struct {
+  TypeTrajet typeTrajet = TOUS;
+  const char *depart = nullptr;
+  const char *arrivee = nullptr;
+  int iMin = 0;
+  int iMax = -1;
+} FiltreTrajets;
+
+enum statutCharger : int { OK, FICHIER_INTROUVABLE, FORMAT_INVALIDE };
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 // Permet la gestion d'un catalogue de trajets (ajout, suppression, recherche)
@@ -89,6 +99,24 @@ public:
   int getNTrajets() const;
   // Mode d'emploi :
   // Renvoie le nombre de trajets dans le catalogue.
+  //
+  // Contrat :
+  //
+
+  statutCharger ChargerTxt(const char *relpath,
+                           FiltreTrajets filtre = FiltreTrajets());
+  // Mode d'emploi :
+  // Charge dans le catalogue des trajets avec partir du fichier spécifié, en
+  // filtrant selon options
+  //
+  // Contrat :
+  //
+
+  statutCharger SauvegarderTxt(const char *relpath,
+                               FiltreTrajets filtre = FiltreTrajets());
+  // Mode d'emploi :
+  // Sauvegarde le catalogue actuel dans un fichier à l'adresse relpath, en
+  // filtrant selon options
   //
   // Contrat :
   //

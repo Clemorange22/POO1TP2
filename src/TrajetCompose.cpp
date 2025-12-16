@@ -73,6 +73,19 @@ TrajetCompose &TrajetCompose::operator=(const TrajetCompose &unTrajetCompose)
 
 } //----- Fin de operator =
 
+ostream &TrajetCompose::operator<<(ostream &stream) {
+  for (int i = 0; i < longueur; i++) {
+    switch (i) {
+    case 0:
+      stream << trajets[0];
+      break;
+    default:
+      trajets[i].outputEtape(stream);
+    }
+  }
+  return stream;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose(const TrajetCompose &unTrajetCompose)
 // Algorithme :

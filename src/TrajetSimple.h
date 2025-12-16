@@ -14,6 +14,8 @@ transport et une arrivée
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
+#include <iostream>
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -92,6 +94,14 @@ public:
   //
   // Contrat :
   //
+
+  friend ostream &operator<<(ostream &stream, const TrajetSimple &unTrajetSimple);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  void outputEtape(ostream &stream);
 
   //-------------------------------------------- Constructeurs - destructeur
   TrajetSimple(const TrajetSimple &unTrajetSimple);

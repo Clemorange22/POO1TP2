@@ -76,6 +76,14 @@ public:
   // Contrat :
   //
 
+  void ChargerTxt();
+  // Mode d'emploi :
+  // Contrat
+
+  void SauvegarderTxt();
+  // Mode d'emploi :
+  // Contrat :
+
   void mainloop();
   // Mode d'emploi :
   // Boucle principale de l'application. Affiche le menu et gère les

@@ -74,6 +74,12 @@ public:
   // Contrat :
   //
 
+  ostream &operator<<(ostream &stream);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
   //-------------------------------------------- Constructeurs - destructeur
   TrajetCompose(const TrajetCompose &unTrajetCompose);
   // Mode d'emploi (constructeur de copie) :

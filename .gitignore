@@ -3,3 +3,4 @@ build/
 trajets
 testsTrajets
 vgcore*
+*.trajets

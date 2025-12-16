@@ -91,6 +91,18 @@ TrajetSimple &TrajetSimple::operator=(const TrajetSimple &unTrajetSimple)
   return *this;
 } //----- Fin de operator =
 
+ostream &operator<<(ostream &stream, const TrajetSimple &unTrajetSimple)
+// Algorithme :
+//
+{
+  stream << unTrajetSimple.depart << "," << unTrajetSimple.moyenTransport << "," << unTrajetSimple.arrivee;
+  return stream;
+} //----- Fin de operator <<
+
+void TrajetSimple::outputEtape(ostream &stream) {
+  stream << "," << moyenTransport << "," << arrivee;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple(const TrajetSimple &unTrajetSimple)
 // Algorithme :
